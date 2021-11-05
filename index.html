@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing page do filme A Viagem de Chihiro">
+    <link rel="shortcut icon" href="assets/img/logo.svg">
+    <!--fontes que serão utilizadas para o site, elas serão chamadas lá no STYLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='chihiro/desafio5/style.css' rel="stylesheet">
+    <title>A viagem de Chihiro</title>
+</head>
+<style>
+   *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    }
+
+    html{
+    font-size: 63%;
+    }
+
+    body{
+    width: 100%;
+    font-family: "Poppins", sans-serif; /*essa é a fonte que colocamos lá no link da head do html*/
+    color: #f9f9f9;
+    background: linear-gradient(45deg, #1a4855, #885053) no-repeat;
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    }
+
+    a{
+        text-decoration: none;
+    }
+    /* O atributo hover é aquele usado quando passamos o cursor do mouse por cima de algum*/
+    a :hover{
+        opacity: 0.8;
+    }
+
+    /*a animação da imagem é feita por keyframes (novidade para mim, Wytoria)*/
+
+    @keyframes move{
+        0% {
+            transform: translateY(0);
+        }
+        50%{
+            transform: translateY(-40px);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+    @keyframes appear{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    .header{
+        margin:43.2px auto 120px ;
+        padding: 0 20px ;
+        max-width: 1,753.6px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        animation: appear 4s;
+        /*o animation vai fazer o efeito de aparecer na tela a imagem da logo marca*/
+    }
+    .header-logo{
+        width: 288px;
+    }
+    .div-social a+a{
+        margin-left: 48px;
+    }
+    .div_social img{
+        width: 38.4px;
+    }
+    .sessao{
+        margin: 0 auto 32px;
+        padding: 0 40px;
+        max-width: 1,753.6px;
+        display: grid;
+        grid-template-areas: 'first second';
+        gap: 32px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .div-sessao{
+        grid-area: first;
+        max-width: 712px;
+        animation: appear 6s;
+    }
+    .div-sessao h2{
+        font-size: 32px;
+        font-weight: 700;
+    }
+    .div-sessao h1{
+        margin: 22,4px 0 38,4px;
+        font-size: 90px;
+        font-weight: 700;
+        line-height: 118px;
+    }
+    .div-sessao p{
+        font-size: 26px ;
+        line-height: 46px;
+        letter-spacing: 1.2px;
+    }
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4.6rem;
+    }
+    .footer a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin: 0 26px 0 0;
+        width: 50%;
+        height: 72px;
+        font-size: 26px;
+        border: 2px solid #658e76;
+        border-radius: 4px;
+        color: #f9f9f9;
+        transform: skew(-20deg);
+
+    }
+    .footer a:first-of-type{
+        background: #658e76;
+    }
+    .ilustracao{
+        grid-area: second;
+        width: 100%;
+        max-width: 500px;
+        animation: move 4s infinite;
+        /*a imagem fica se movendo para cima e para baixo*/
+    }
+
+    /*keyframe - javascript - utilizado para movimentação das imagens*/
+    .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    }
+
+    .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    }
+
+    .modal {
+    position: relative;
+    margin: 5vh auto;
+    width: 90%;
+    height: 90%;
+    }
+
+    .modal__close {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    color: #ff5555;
+    cursor: pointer;
+    }
+
+    iframe {
+    top: 5%;
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    border-radius: 8px;
+    }
+
+    /*responsividade do site*/
+    @media only screen and (max-width: 768px) {
+    html {
+        font-size: 60%;
+    }
+
+    .header-logo {
+        width: 160px;
+    }
+
+    .div_social a + a {
+        margin-left: 32px;
+    }
+
+    .div_social a img {
+        width: 32px;
+    }
+
+    .sessao {
+        grid-template-areas:
+        "first"
+        "second";
+    }
+
+    .div-sessao {
+        grid-area: second;
+    }
+
+    .div-sessao h1 {
+        font-size: 77px;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer a {
+        margin: 0 0 26px;
+        width: 100%;
+    }
+
+    .ilustracao {
+        grid-area: first;
+    }
+}
+
+</style>
+<body>
+    <header class="header">
+        <img class="header-logo" src='desafio5/image/logo.svg' alt="Logotipo do Estúdio Ghibli">
+
+        <div class="div_social">
+            <!--redes sociais na header-->
+            <a href="https://www.facebook.com/FansOfStudioGhibli/" target= _blank  title="Facebook">
+                <img src="https://img.icons8.com/ios/50/000000/facebook--v1.png" alt="Facebook Icon">
+
+            <a href="https://www.instagram.com/ghibli.movies/" target= _blank  title="Instagram">
+                <img src="https://img.icons8.com/ios/50/000000/instagram-new--v1.png" alt="Instagram Icon">
+            </a>
+
+            <a href="https://twitter.com/ghibliusa" target= _blank title="Twitter">
+                <img src="https://img.icons8.com/ios/50/000000/twitter--v1.png" alt="Twitter Icon">
+            </a>
+
+            <a href="https://www.youtube.com/playlist?list=PLVfHJfXFDXRisXKXlgcRwL0_WBaZ4cPnY" target= _blank  title="YouTube">
+                <img src=https://img.icons8.com/ios/50/000000/youtube-play--v1.png alt="YouTube Icon">
+            </a>
+            <!--target= _blank serve para quando o usuario clicar no link esse link seja aberto em outra aba e não no index-->
+        </div>
+    </header>
+
+    <section class="sessao">
+        <div class="div-sessao">
+            <h2>HAYAO MIYAZAKI</h2>
+            <h1>A VIAGEM <br> DE CHIHIRO</h1>
+            <p>Chihiro chega a um mundo mágico dominado por uma bruxa. Aqueles que a desobedecem são transformados em animais.</p>
+            
+            <footer class="footer">
+                <a href="https://www.adorocinema.com/filmes/filme-37485/" target= _blank>
+                    <img src="">
+                    Saiba mais
+                </a>
+                <a href="https://www.youtube.com/watch?v=SgZI655GgHk" onclick="openModal()">Assista ao trailer</a>
+            </footer>
+        </div>
+
+        <img class="ilustracao" src="desafio5/image/ilustracao.png" alt="Personagens">
+
+    </section>
+
+    <div class='div3'>
+        <div class='div4'>
+            <a class="div4-fecha" onclick="closeModal()" title="fechar">
+                <i></i>
+            </a>
+
+            <div class="div5">
+                <iframe src="" frameborder = '0'></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const iframe = modalOverlay.querySelector("iframe");
+
+        const openModal = () => {
+        modalOverlay.classList.add('active');
+        iframe.src = "https://www.youtube.com/embed/ieaXFu4wcXI";
+        };
+
+        const closeModal = () => {
+        modalOverlay.classList.remove("active");
+        iframe.src = "";
+        };
+    </script>
+</body>
+</html>
